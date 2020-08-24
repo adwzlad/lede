@@ -58,8 +58,8 @@ jobs:
       - name: 自定义插件下载3
         run: |
           cd package
-          mkdir lede-packages
-          cd lede-packages
+          mkdir openwrt-packages
+          cd openwrt-packages
           git clone https://github.com/kenzok8/openwrt-packages
           git clone https://github.com/kenzok8/small
           git clone https://github.com/tzxiaozhen88/luci-app-koolproxyR
@@ -115,9 +115,9 @@ jobs:
           EOF
 
           # 固件压缩:
-          cat >> .config <<EOF
-          CONFIG_TARGET_IMAGES_GZIP=y
-          EOF
+          # cat >> .config <<EOF
+          # CONFIG_TARGET_IMAGES_GZIP=y
+          # EOF
 
           # 编译UEFI固件:
           # cat >> .config <<EOF
@@ -152,7 +152,7 @@ jobs:
           # 常用LuCI插件选择:
           cat >> .config <<EOF
           CONFIG_PACKAGE_luci-app-adbyby-plus=n
-          CONFIG_PACKAGE_luci-app-flowoffload=y
+          CONFIG_PACKAGE_luci-app-flowoffload=n
           CONFIG_PACKAGE_luci-app-upnp=n
           CONFIG_PACKAGE_luci-app-ssr-plus=n
           CONFIG_PACKAGE_luci-app-koolproxyR=y
@@ -171,7 +171,7 @@ jobs:
           CONFIG_PACKAGE_luci-app-ipsec-vpnd=n
           CONFIG_PACKAGE_luci-app-arpbind=n
           CONFIG_PACKAGE_luci-app-nlbwmon=n
-          # CONFIG_PACKAGE_luci-app-samba=y
+          # CONFIG_PACKAGE_luci-app-samba=n
           CONFIG_PACKAGE_luci-app-vsftpd=n
           CONFIG_PACKAGE_luci-app-ramfree=n
           CONFIG_PACKAGE_luci-app-filetransfer=n
